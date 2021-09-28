@@ -1,10 +1,11 @@
+require('dotenv').config()
 const {Telegraf} = require('telegraf')
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 const ChannelUsername = process.env.CHANNEL_USERNAME
 
 bot.start((ctx) => {
-
+    ctx.reply('Started! /help -- help')
 })
 
 bot.help((ctx) => {
@@ -65,9 +66,5 @@ function sendRequired(ctx) {
     ctx.reply('Send all required fields!')
 }
 
-bot.command('exit', ()=>{
-    bot.stop()
-})
 
 bot.launch()
-console.log('[ RUNNING ] ...')
